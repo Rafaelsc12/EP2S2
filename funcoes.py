@@ -1,8 +1,8 @@
-def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
+def define_posicoes(linha, coluna, orientacao, tamanho):
     y=linha
     x=coluna
     lf=[]
-    fita={}
+
     if orientacao=="vertical":
         while tamanho+linha>y:
             lf.append([y, x])
@@ -12,17 +12,23 @@ def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
         while tamanho+coluna>x:
             lf.append([y, x])
             x=x+1
+    return lf
+
+def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
+    lf=define_posicoes(linha, coluna, orientacao, tamanho)
+    fita=frota
+    listas=[]
+
     while True:
-        if nome not in frota.keys():
-            fita=nome, lf
+
+        if nome not in fita.keys():
+            fita[nome]=lf
+        else:
+            listas.append([frota[nome], lf])
+        fita[nome]=listas
+        i=len(nome)+1
+        if len(frota)+len(nome)==i:
+            break
     return fita
 
-frota = {}
-nome_navio = 'navio-tanque'
-linha = 6
-coluna = 1
-orientacao = 'horizontal'
-tamanho = 3
 
-resultado = preenche_frota(frota, nome_navio, linha, coluna, orientacao, tamanho)
-print(resultado)
