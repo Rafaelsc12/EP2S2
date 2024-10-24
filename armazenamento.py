@@ -13,3 +13,14 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
             lf.append([y, x])
             x=x+1
     return lf
+
+def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
+    posicao = []
+    posicao.append(define_posicoes(linha, coluna, orientacao, tamanho))
+    if nome not in frota:
+        frota[nome] = posicao
+    else:
+        indice = len(frota[nome]) - 1
+        frota[nome] += posicao
+        
+    return frota

@@ -15,20 +15,15 @@ def define_posicoes(linha, coluna, orientacao, tamanho):
     return lf
 
 def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
-    lf=define_posicoes(linha, coluna, orientacao, tamanho)
-    fita=frota
-    listas=[]
-
-    while True:
-
-        if nome not in fita.keys():
-            fita[nome]=lf
-        else:
-            listas.append([frota[nome], lf])
-        fita[nome]=listas
-        i=len(nome)+1
-        if len(frota)+len(nome)==i:
-            break
-    return fita
+    posicao = []
+    posicao.append(define_posicoes(linha, coluna, orientacao, tamanho))
+    if nome not in frota:
+        frota[nome] = posicao
+    else:
+        indice = len(frota[nome]) - 1
+        frota[nome] += posicao
+        
+    return frota
+    
 
 
