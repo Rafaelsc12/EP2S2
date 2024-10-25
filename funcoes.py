@@ -52,3 +52,25 @@ def posiciona_frota(frota):
                 tabuleiro[posicao[0]][posicao[1]] = 1
 
     return tabuleiro
+
+
+def afundados(frota, tabuleiro):
+    afundados = 0
+
+    for navio in frota:
+        for composicao in frota[navio]:
+            tamanho = len(composicao)
+            casas_atingidas = 0
+            for posicao in composicao:
+                if tabuleiro[posicao[0]][posicao[1]] == "X":
+                    casas_atingidas += 1
+            if casas_atingidas == tamanho:
+                afundados += 1
+    return afundados
+
+        
+
+
+            
+
+    
