@@ -25,5 +25,30 @@ def preenche_frota(frota, nome, linha, coluna, orientacao, tamanho):
         
     return frota
     
+def faz_jogada(tabuleiro, linha, coluna):
+    if tabuleiro[linha][coluna] == 1:
+        tabuleiro[linha][coluna] = "X"
+    elif tabuleiro[linha][coluna] == 0:
+        tabuleiro[linha][coluna] = "-"
+    return tabuleiro
 
+def posiciona_frota(frota):
+    tabuleiro = [
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+    for navio in frota:
+        for composicao in frota[navio]:
+            for posicao in composicao:
 
+                tabuleiro[posicao[0]][posicao[1]] = 1
+
+    return tabuleiro
